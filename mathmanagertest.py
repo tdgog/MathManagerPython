@@ -1,5 +1,6 @@
 import unittest
-from mathmanager import MathManager
+from mathmanager import MathManager, InvalidMarkException
+
 
 class mathmanagertest(unittest.TestCase):
 	def testAdd(self):
@@ -16,7 +17,9 @@ class mathmanagertest(unittest.TestCase):
 
 	def test_calculate_degree_classification(self):
 		math = MathManager()
-		self.assertEqual(math.calculate_degree_classification([40, 40, -1, 40, 40]), "invalid")
+		self.assertRaises(InvalidMarkException, math.calculate_degree_classification, [40, 40, -1, 40, 40])
+		self.assertRaises(InvalidMarkException, math.calculate_degree_classification, [40, 40, 105, 40, 40])
+		self.assertRaises(InvalidMarkException, math.calculate_degree_classification, [40, 40, 40, 40, 40, 40])
 		self.assertEqual(math.calculate_degree_classification([40, 40, 40, 10, 10]), "fail")
 		self.assertEqual(math.calculate_degree_classification([40, 40, 40, 40, 10]), "3rd")
 		self.assertEqual(math.calculate_degree_classification([100, 35, 60, 45, 62]), "2:1")

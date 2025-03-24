@@ -16,8 +16,8 @@ class MathManager:
 		pass
 
 	def calculate_degree_classification(self, marks: list[int]) -> str:
-		if min(marks) < 0 or max(marks) > 100:
-			return "invalid"
+		if min(marks) < 0 or max(marks) > 100 or len(marks) != 5:
+			raise InvalidMarkException()
 
 		marks.remove(min(marks))
 		average_mark = sum(marks) / len(marks)
@@ -31,3 +31,6 @@ class MathManager:
 		elif average_mark < 70:
 			return "2:1"
 		return "1st"
+
+class InvalidMarkException(Exception):
+	...
