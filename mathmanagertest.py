@@ -11,7 +11,7 @@ class mathmanagertest(unittest.TestCase):
 		self.assertEqual(math.subtract(0, 3), -3)
 
 	def testMultiply(self):
-		math = MathManager()
+		math = MathManager();
 		self.assertEqual(math.multiply(0, 3), 0)
 
 	def test_calculate_degree_classification(self):
