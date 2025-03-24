@@ -1,6 +1,3 @@
-from sympy.strategies.core import switch
-
-
 class MathManager:
 
 	def add(self, a, b):
